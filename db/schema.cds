@@ -3,6 +3,8 @@ namespace com.satinfotech.practice;
 entity Student{
     @title:'Student Id'
     key studentid:String(10);
+    @title: 'Gender'
+    gender: String(1);
     @title:'First Name'
     first_name:String(30) @mandatory;
     @title:'Last Name'

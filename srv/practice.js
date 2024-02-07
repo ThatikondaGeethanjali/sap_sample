@@ -22,16 +22,37 @@ module.exports = cds.service.impl(function () {
         if(Array.isArray(results)){
             results.forEach(element => {
              element.age=calcAge(element.dob);
-             //element.gender = getDisplayGender(element.gender);
+             element.gender = getDisplayGender(element.gender);
  
             });
         }else{
             results.age=calcAge(results.dob);
-            //results.gender = getDisplayGender(results.gender);
+            results.gender = getDisplayGender(results.gender);
         }
         
         return results;
     });
+
+    function getDisplayGender(genderCode) {
+        if (genderCode === 'M') {
+            return 'Male';
+        } else if (genderCode === 'F') {
+            return 'Female';
+        } else {
+            // Add additional cases if needed
+            return 'Unknown';
+        }
+    }
+
+    
+    /*this.on('READ',Gender,async(req)=>{
+        genders=[
+            {"code":"F","Description":"Female"},
+            {"code":"M","Description":"Male"}
+        ]
+        genders.$count=genders.length;
+        return genders ;
+    })*/
 
     this.before(['CREATE'], Student, async(req) => {
 
